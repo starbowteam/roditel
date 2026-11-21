@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Семейный квиз — доска и «Угадай момент»</title>
-<meta name="description" content="Семейный квиз: доска на 7 предметов для двух команд и игра «Угадай момент» с 10 искажёнными постерами.">
+<title>Дети родителей — семейный квиз</title>
+<meta name="description" content="Дети родителей: семейный квиз на 7 предметов и игра «Угадай момент» с 10 постерами для двух команд.">
 <meta name="theme-color" content="#f7f4ff">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%236d5dfc'/><stop offset='1' stop-color='%23ff6f61'/></linearGradient></defs><rect width='32' height='32' rx='9' fill='url(%23g)'/><text x='16' y='24' font-family='Arial' font-size='19' font-weight='bold' fill='white' text-anchor='middle'>?</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='9' fill='%236d5dfc'/><text x='16' y='24' font-family='Arial' font-size='19' font-weight='bold' fill='white' text-anchor='middle'>?</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap" rel="stylesheet">
@@ -50,7 +50,7 @@ body{
 
 .topbar{position:relative;z-index:3;max-width:1120px;margin:0 auto;padding:20px clamp(16px,4vw,28px) 0;display:flex;align-items:center;gap:12px}
 .brand{appearance:none;border:0;background:transparent;color:inherit;font:inherit;font-weight:800;font-size:16px;letter-spacing:-.01em;display:inline-flex;align-items:center;gap:10px;padding:7px;border-radius:14px;cursor:pointer}
-.brand-dot{width:26px;height:26px;border-radius:9px;background:linear-gradient(135deg,var(--violet),var(--coral));box-shadow:0 8px 18px -8px rgba(109,93,252,.9)}
+.brand-dot{width:26px;height:26px;border-radius:9px;background:var(--violet);box-shadow:0 6px 14px -8px rgba(109,93,252,.9)}
 .spacer{flex:1}
 .iconbtn{appearance:none;cursor:pointer;width:42px;height:42px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.9);color:var(--ink);font:inherit;font-size:17px;line-height:1;display:grid;place-items:center;box-shadow:var(--shadow-s);transition:transform .16s ease,box-shadow .16s ease}
 .iconbtn:hover{transform:translateY(-2px);box-shadow:var(--shadow-m)}
@@ -67,13 +67,15 @@ h1{font-size:clamp(30px,5.6vw,54px);line-height:1.06}
 h2{font-size:clamp(22px,3.4vw,32px);line-height:1.15}
 h3{font-size:18px;line-height:1.25}
 .lead{margin:12px 0 0;color:var(--muted);font-size:16px;max-width:62ch}
-.grad{background:linear-gradient(100deg,var(--violet) 0%,var(--coral) 55%,var(--amber) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.btn{appearance:none;border:1px solid var(--line);background:#fff;color:var(--ink);font:inherit;font-weight:800;padding:12px 18px;border-radius:14px;cursor:pointer;box-shadow:var(--shadow-s);transition:transform .16s ease,box-shadow .16s ease,background .16s ease}
+.accent-text{color:var(--violet)}
+.btn{appearance:none;border:1px solid var(--line);background:#fff;color:var(--ink);font:inherit;font-weight:800;padding:11px 18px;border-radius:14px;cursor:pointer;box-shadow:var(--shadow-s);transition:transform .16s ease,box-shadow .16s ease,background .16s ease}
 .btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:var(--shadow-m)}
 .btn:disabled{cursor:default;opacity:.55}
-.btn.primary{background:linear-gradient(120deg,var(--violet),var(--coral));color:#fff;border-color:transparent;box-shadow:0 12px 26px -14px rgba(109,93,252,.9)}
+.btn.primary{background:var(--violet);border-color:var(--violet);color:#fff;box-shadow:0 10px 20px -14px rgba(109,93,252,.95)}
+.btn.ok{background:#eaf9f1;border-color:rgba(29,122,78,.25);color:#1d7a4e}
+.btn.no{background:#fff0ee;border-color:rgba(200,74,62,.25);color:#c84a3e}
 .btn.small{padding:8px 12px;font-size:13px;border-radius:11px}
-.btn.ghost{background:rgba(255,255,255,.65)}
+.btn.ghost{background:#fff}
 .center{text-align:center}
 
 /* ---------- панель команд ---------- */
@@ -86,8 +88,8 @@ h3{font-size:18px;line-height:1.25}
 .team[data-team="1"].receiving{border-style:dashed;border-color:var(--amber)}
 .team.active.receiving{border-style:solid;border-color:var(--amber)}
 .team-mark{width:38px;height:38px;flex:0 0 38px;border-radius:13px;display:grid;place-items:center;color:#fff;font-weight:800;font-family:Unbounded,sans-serif;font-size:14px}
-.team[data-team="0"] .team-mark{background:linear-gradient(135deg,var(--blue),#6aa8ff)}
-.team[data-team="1"] .team-mark{background:linear-gradient(135deg,var(--pink),#ff9ac4)}
+.team[data-team="0"] .team-mark{background:var(--blue)}
+.team[data-team="1"] .team-mark{background:var(--pink)}
 .team-info{min-width:0;flex:1}
 .team-name{width:100%;border:0;background:transparent;font:inherit;font-weight:800;font-size:14px;color:var(--ink);padding:0 0 2px}
 .team-hint{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
@@ -96,9 +98,6 @@ h3{font-size:18px;line-height:1.25}
 @keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.25)}100%{transform:scale(1)}}
 .score-center{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:0 6px;text-align:center}
 .score-center strong{font-family:Unbounded,sans-serif;font-size:12px;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
-.score-actions{display:flex;gap:6px}
-.adj{appearance:none;cursor:pointer;border:1px solid var(--line);background:#fff;border-radius:9px;width:26px;height:26px;font:inherit;font-weight:800;font-size:13px;color:var(--muted)}
-.adj:hover{background:#f4f1ff;color:var(--ink)}
 .recipient-toggle{appearance:none;cursor:pointer;border:1px dashed rgba(242,167,43,.75);background:#fffaf0;color:#8a5b00;border-radius:10px;padding:5px 9px;font:inherit;font-size:11.5px;font-weight:800;display:inline-flex;align-items:center;gap:7px;max-width:190px}
 .recipient-toggle b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:112px}
 .recipient-toggle .swap{font-size:14px;color:var(--amber)}
@@ -150,9 +149,6 @@ h3{font-size:18px;line-height:1.25}
 .tile.win1 .stamp{color:var(--pink)}
 .tile.miss{background:#f4f3f7}
 .tile.miss .stamp{color:#a5a0b5}
-.rules{margin-top:16px;padding:16px 18px;border-radius:18px;background:rgba(255,255,255,.7);border:1px solid var(--line);font-size:13.5px;color:var(--muted)}
-.rules b{color:var(--ink)}
-
 /* ---------- игра «Угадай момент» ---------- */
 .game-shell{max-width:980px;margin:0 auto}
 .game-card{display:grid;grid-template-columns:minmax(220px,310px) 1fr;gap:22px;padding:22px;border-radius:28px;background:rgba(255,255,255,.9);border:1px solid rgba(255,255,255,.9);box-shadow:var(--shadow-l)}
@@ -164,7 +160,7 @@ h3{font-size:18px;line-height:1.25}
 .glitch-overlay{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.28;background:repeating-linear-gradient(0deg,rgba(255,255,255,.07) 0 2px,transparent 2px 7px);mix-blend-mode:screen;animation:glitch 2.6s steps(2) infinite}
 .poster-stage:not(.parody) .glitch-overlay{display:none}
 .poster-badge{position:absolute;z-index:2;top:12px;left:12px;padding:6px 11px;border-radius:999px;background:rgba(15,12,36,.78);backdrop-filter:blur(8px);color:#fff;font-size:10px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
-.poster-badge.original{background:linear-gradient(120deg,var(--green),var(--teal))}
+.poster-badge.original{background:var(--green)}
 .poster-caption{position:absolute;z-index:2;left:16px;right:16px;bottom:16px;color:#fff;font-family:Unbounded,sans-serif;font-weight:700;font-size:clamp(15px,2vw,20px);line-height:1.25;text-shadow:0 2px 12px rgba(0,0,0,.6)}
 .poster-caption small{display:block;margin-top:5px;font-family:Manrope,sans-serif;font-size:11px;font-weight:800;letter-spacing:.12em;opacity:.85}
 @keyframes posterWobble{0%,100%{transform:scale(1.02) rotate(-.5deg)}50%{transform:scale(1.05) rotate(.5deg) translateX(2px)}}
@@ -175,7 +171,7 @@ h3{font-size:18px;line-height:1.25}
 .progress-head strong{font-size:13px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--violet)}
 .progress-head span{font-family:Unbounded,sans-serif;font-size:12px;color:var(--muted)}
 .progress-track{height:8px;border-radius:999px;background:#eeeaf8;overflow:hidden;margin:10px 0 12px}
-.progress-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--violet),var(--coral),var(--amber));width:0;transition:width .4s ease}
+.progress-fill{height:100%;border-radius:999px;background:var(--violet);width:0;transition:width .4s ease}
 .dots{display:flex;gap:5px;margin-bottom:14px}
 .dots i{width:100%;height:4px;border-radius:99px;background:#e8e4f2;transition:background .25s ease,transform .25s ease}
 .dots i.now{background:var(--violet);transform:scaleY(1.6)}
@@ -190,7 +186,7 @@ h3{font-size:18px;line-height:1.25}
 .moments-opt .key{width:24px;height:24px;flex:0 0 24px;border-radius:8px;background:#ece9ff;color:var(--violet);display:grid;place-items:center;font-size:11px}
 .moments-opt.correct{border-color:var(--green);background:#eaf9f1;color:#1d7a4e;animation:pulseOk .4s ease}
 .moments-opt.wrong{border-color:var(--coral);background:#fff0ee;color:#c84a3e;animation:shake .35s ease}
-.answer-box{margin-top:14px;padding:15px 17px;border-radius:17px;background:linear-gradient(135deg,#f3f0ff,#fff5f1);border:1px solid var(--line)}
+.answer-box{margin-top:14px;padding:15px 17px;border-radius:17px;background:#f7f5ff;border:1px solid var(--line)}
 .answer-box .lbl{font-size:10px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--violet)}
 .answer-box .ans{font-family:Unbounded,sans-serif;font-weight:700;font-size:19px;margin:5px 0 8px}
 .answer-box .note{margin:0;color:var(--muted);font-size:13.5px}
@@ -213,26 +209,38 @@ h3{font-size:18px;line-height:1.25}
 .modal.open{display:flex;animation:fadeIn .2s ease}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 .modal-backdrop{position:absolute;inset:0;background:rgba(20,17,45,.6);backdrop-filter:blur(9px)}
-.modal-card{position:relative;width:min(720px,100%);max-height:94vh;overflow:auto;border-radius:28px;background:var(--surface);box-shadow:0 40px 90px -30px rgba(10,8,30,.7);animation:modalIn .3s cubic-bezier(.22,.85,.25,1)}
+.modal-card{position:relative;width:min(660px,100%);max-height:94vh;overflow:auto;border-radius:26px;background:var(--surface);box-shadow:0 40px 90px -30px rgba(10,8,30,.7);animation:modalIn .3s cubic-bezier(.22,.85,.25,1)}
 @keyframes modalIn{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
-.modal-head{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:20px 24px 10px}
-.modal-head .kicker{margin-bottom:4px;color:var(--accent,var(--violet))}
-.m-team-block{display:grid;grid-template-columns:132px 1fr;gap:12px;align-items:center;padding:0 24px 9px}
-.m-row-label{margin:0;font-size:10px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
-.m-teams{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.m-team{appearance:none;cursor:pointer;font:inherit;font-weight:800;font-size:13px;padding:10px 12px;border-radius:13px;border:1.5px solid var(--line);background:#faf9ff;color:var(--muted);transition:all .16s ease}
+.modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:22px 24px 14px}
+.modal-head .kicker{margin-bottom:5px;color:var(--accent,var(--violet))}
+.modal-body{padding:0 24px 24px}
+.m-picks{display:grid;gap:10px;padding:14px;border-radius:18px;background:#f7f5ff;margin-bottom:18px}
+.m-pick-row{display:grid;grid-template-columns:118px 1fr;gap:12px;align-items:center}
+.m-pick-label{font-size:12px;font-weight:900;color:var(--muted)}
+.m-teams{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.m-team{appearance:none;cursor:pointer;font:inherit;font-weight:800;font-size:13px;padding:10px 12px;border-radius:12px;border:1.5px solid var(--line);background:#fff;color:var(--muted);transition:all .16s ease}
+.m-team:hover:not(:disabled){transform:translateY(-1px)}
 .m-team[data-role="answer"].active[data-team="0"]{border-color:var(--blue);background:#edf5ff;color:#2466c4}
 .m-team[data-role="answer"].active[data-team="1"]{border-color:var(--pink);background:#fff0f7;color:#c2437b}
 .m-team[data-role="receive"].active{border-color:var(--amber);background:#fff8e8;color:#8a5b00}
 .m-team:disabled{opacity:.5;cursor:default}
-.modal-body{padding:4px 24px 22px}
-.clue{font-family:Unbounded,sans-serif;font-weight:700;font-size:clamp(20px,3vw,29px);line-height:1.28;text-align:center;margin:12px 0 24px}
-.verdict{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
-.verdict .btn{min-width:170px}
-.modal-foot{padding:12px 24px 18px;border-top:1px solid var(--line);font-size:11.5px;font-weight:700;color:var(--muted);text-align:center}
+.clue{font-family:Unbounded,sans-serif;font-weight:700;font-size:clamp(19px,2.8vw,27px);line-height:1.32;text-align:center;margin:4px 0 18px}
+.answer-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ans-opt{appearance:none;cursor:pointer;font:inherit;font-weight:800;text-align:left;display:flex;align-items:center;gap:11px;min-height:58px;padding:10px 13px;border-radius:14px;border:1.5px solid var(--line);background:#fff;color:var(--ink);transition:all .16s ease}
+.ans-opt:hover:not(:disabled){border-color:var(--violet);background:#f6f3ff;transform:translateY(-2px)}
+.ans-opt:disabled{cursor:default}
+.ans-opt .key{width:28px;height:28px;flex:0 0 28px;border-radius:9px;background:#f0edff;color:var(--violet);display:grid;place-items:center;font-size:12px;font-weight:900}
+.ans-opt.chosen{border-color:var(--violet);background:#f3f0ff}
+.ans-opt.correct{border-color:var(--green);background:#eaf9f1;color:#1d7a4e}
+.ans-opt.wrong{border-color:var(--coral);background:#fff0ee;color:#c84a3e;animation:shake .35s ease}
+.answer-box{margin-top:16px;padding:15px 17px;border-radius:16px;background:#f7f5ff;border:1px solid var(--line)}
+.answer-box .lbl{font-size:10px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--violet)}
+.answer-box .ans{font-family:Unbounded,sans-serif;font-weight:700;font-size:18px;margin:5px 0 8px}
+.answer-box .note{margin:0;color:var(--muted);font-size:13.5px}
+.verdict{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.verdict .btn{width:100%}
 .toast{position:fixed;z-index:110;left:50%;bottom:28px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#191734;color:#fff;padding:12px 20px;border-radius:14px;font-weight:800;font-size:14px;box-shadow:var(--shadow-l);transition:opacity .2s ease,transform .2s ease;max-width:calc(100vw - 32px);text-align:center}
 .toast.show{opacity:1;transform:translate(-50%,0)}
-.footer{position:relative;z-index:1;text-align:center;padding:0 20px 30px;color:var(--muted);font-size:12px}
 
 @media(max-width:860px){
   .scorebar{grid-template-columns:1fr 1fr;gap:8px}
@@ -252,9 +260,10 @@ h3{font-size:18px;line-height:1.25}
   .team-name{font-size:12px}
   .game-card{padding:16px;border-radius:22px}
   .moments-opts{grid-template-columns:1fr}
-  .m-team-block{grid-template-columns:1fr;gap:6px;padding:0 16px 9px}
+  .m-pick-row{grid-template-columns:1fr;gap:6px}
+  .m-picks{padding:12px}
+  .answer-options{grid-template-columns:1fr}
   .modal-head,.modal-body{padding-left:16px;padding-right:16px}
-  .verdict .btn{min-width:0;flex:1}
   .recipient-toggle{max-width:150px}
 }
 @media(prefers-reduced-motion:reduce){
@@ -267,9 +276,9 @@ h3{font-size:18px;line-height:1.25}
 <canvas id="fx" aria-hidden="true"></canvas>
 
 <header class="topbar">
-  <button id="btn-brand" class="brand" type="button"><span class="brand-dot"></span>Семейный квиз</button>
+  <button id="btn-brand" class="brand" type="button"><span class="brand-dot"></span>Дети родителей</button>
   <div class="spacer"></div>
-  <button id="btn-home" class="iconbtn" type="button" title="На главную" aria-label="На главную" hidden>⌂</button>
+  <button id="btn-home" class="iconbtn" type="button" title="На главную" aria-label="На главную" hidden>🏠</button>
   <button id="btn-sound" class="iconbtn" type="button" title="Звук" aria-label="Выключить звук">🔊</button>
 </header>
 
@@ -284,12 +293,7 @@ h3{font-size:18px;line-height:1.25}
   </button>
   <div class="score-center">
     <strong id="sb-mode">Доска-квиз</strong>
-    <div class="score-actions">
-      <button class="adj" data-adj="-50" type="button" title="−50">−</button>
-      <button class="adj" data-adj="50" type="button" title="+50">+</button>
-      <button id="btn-clear" class="btn small ghost" type="button">Сбросить</button>
-    </div>
-    <button id="btn-recipient" class="recipient-toggle" type="button" title="Начислить очки другой команде"><span>Очки → <b id="sb-recipient">Команда 1</b></span><span class="swap">⇄</span></button>
+    <button id="btn-recipient" class="recipient-toggle" type="button" title="Кому начислить очки"><span>🏆 <b id="sb-recipient">Команда 1</b></span><span class="swap">⇄</span></button>
   </div>
   <button class="team" data-team="1" type="button">
     <span class="team-mark">2</span>
@@ -304,9 +308,9 @@ h3{font-size:18px;line-height:1.25}
 <main class="wrap">
   <section id="s-home" class="screen is-active">
     <div class="home-hero">
-      <p class="kicker">Два режима · одна компания</p>
-      <h1>Семейный вечер <span class="grad">начинается здесь</span></h1>
-      <p class="lead">Выберите игру: классическая доска на семь предметов или «Угадай момент» с десятью искажёнными постерами. Счёт общий, а очки можно начислить любой команде.</p>
+      <p class="kicker">Семейная игра для всей компании</p>
+      <h1>Дети родителей<br><span class="accent-text">семейный квиз</span></h1>
+      <p class="lead">Выберите игру: доска на семь предметов или «Угадай момент» с десятью постерами. Очки можно начислить любой команде.</p>
     </div>
 
     <div class="modes">
@@ -329,7 +333,6 @@ h3{font-size:18px;line-height:1.25}
         <span class="pill" style="--accent:var(--blue)"><span class="dot"></span><span id="mini-name-0">Команда 1</span> <b id="mini-0">0</b></span>
         <span class="pill" style="--accent:var(--pink)"><span class="dot"></span><span id="mini-name-1">Команда 2</span> <b id="mini-1">0</b></span>
       </div>
-      <button id="btn-new-all" class="btn small ghost" type="button">Начать заново</button>
     </div>
   </section>
 
@@ -338,12 +341,10 @@ h3{font-size:18px;line-height:1.25}
       <div>
         <p class="kicker">Режим 01 · доска</p>
         <h2>Квиз: 7 предметов</h2>
-        <p class="lead">Откройте клетку, выберите отвечающую команду и при необходимости переключите получение очков на другую команду.</p>
+        <p class="lead">Откройте клетку, выберите вариант ответа и оцените его. Очки можно направить любой команде.</p>
       </div>
-      <button class="btn small ghost" data-reset="subject" type="button">Новая доска</button>
     </div>
     <div class="board-wrap"><div id="subject-board" class="board board-subject"></div></div>
-    <div class="rules"><b>Как играть:</b> нажмите на клетку с ценой, прочитайте вопрос, покажите ответ и оцените его. В окне есть два выбора: кто отвечает и кому идут очки. Клавиши <b>1</b> и <b>2</b> меняют отвечающего, <b>Q</b> и <b>W</b> — получателя очков.</div>
   </section>
 
   <section id="s-moments" class="screen">
@@ -354,7 +355,6 @@ h3{font-size:18px;line-height:1.25}
           <h2>Угадай момент</h2>
           <p class="lead">10 фильмов. Сначала — искажённая пародия на афишу, затем 4 варианта названия. После ответа появится оригинальный постер.</p>
         </div>
-        <button id="moment-new" class="btn small ghost" type="button">Новый раунд</button>
       </div>
 
       <div id="moment-game" class="game-card" hidden>
@@ -378,8 +378,7 @@ h3{font-size:18px;line-height:1.25}
           </div>
           <div id="moment-verdict" class="verdict-line" hidden></div>
           <div class="game-actions">
-            <button id="moment-next" class="btn primary" type="button" hidden>Следующий фильм</button>
-            <button id="moment-reset" class="btn ghost" type="button">Начать заново</button>
+            <button id="moment-next" class="btn primary" type="button" hidden>Следующий фильм →</button>
           </div>
         </div>
       </div>
@@ -405,78 +404,99 @@ h3{font-size:18px;line-height:1.25}
       </div>
       <button id="m-close" class="iconbtn" type="button" aria-label="Закрыть">✕</button>
     </div>
-    <div class="m-team-block">
-      <p class="m-row-label">Отвечает</p>
-      <div class="m-teams">
-        <button id="m-answer-0" class="m-team" data-role="answer" data-team="0" type="button">Команда 1</button>
-        <button id="m-answer-1" class="m-team" data-role="answer" data-team="1" type="button">Команда 2</button>
-      </div>
-    </div>
-    <div class="m-team-block">
-      <p class="m-row-label">Начислить очки</p>
-      <div class="m-teams">
-        <button id="m-receive-0" class="m-team" data-role="receive" data-team="0" type="button">Команда 1</button>
-        <button id="m-receive-1" class="m-team" data-role="receive" data-team="1" type="button">Команда 2</button>
-      </div>
-    </div>
     <div class="modal-body">
+      <div class="m-picks">
+        <div class="m-pick-row">
+          <span class="m-pick-label">👤 Отвечает</span>
+          <div class="m-teams">
+            <button id="m-answer-0" class="m-team" data-role="answer" data-team="0" type="button">Команда 1</button>
+            <button id="m-answer-1" class="m-team" data-role="answer" data-team="1" type="button">Команда 2</button>
+          </div>
+        </div>
+        <div class="m-pick-row">
+          <span class="m-pick-label">🏆 Очки</span>
+          <div class="m-teams">
+            <button id="m-receive-0" class="m-team" data-role="receive" data-team="0" type="button">Команда 1</button>
+            <button id="m-receive-1" class="m-team" data-role="receive" data-team="1" type="button">Команда 2</button>
+          </div>
+        </div>
+      </div>
       <div id="m-clue" class="clue" hidden></div>
+      <div id="m-options" class="answer-options"></div>
       <div id="m-answer" class="answer-box" hidden>
         <div class="lbl">Правильный ответ</div>
         <div id="m-ans" class="ans"></div>
         <p id="m-note" class="note"></p>
       </div>
-      <div id="m-reveal-row" class="center"><button id="m-reveal" class="btn primary" type="button">Показать ответ</button></div>
       <div id="m-verdict" class="verdict" hidden>
-        <button id="m-yes" class="btn primary" type="button">Верно</button>
-        <button id="m-no" class="btn" type="button">Ошибка</button>
+        <button id="m-yes" class="btn ok" type="button">✅ Верно</button>
+        <button id="m-no" class="btn no" type="button">❌ Ошибка</button>
       </div>
-      <div id="m-done-row" class="center" hidden><button id="m-done" class="btn primary" type="button">Готово</button></div>
     </div>
-    <div class="modal-foot">1 / 2 — отвечает · Q / W — очки · Enter — продолжить · Esc — закрыть</div>
   </div>
 </div>
 
 <div id="toast" class="toast"></div>
-<footer class="footer">Семейный квиз · афиши и иллюстрации сохранены в папке <b>images/</b>, источники указаны в <b>images/CREDITS.md</b></footer>
 
 <script>
 /* ============================ ДАННЫЕ ============================ */
+/* Верный вариант всегда первый — перед показом варианты перемешиваются */
 const SUBJECTS = [
   {id:'math', title:'Математика', icon:'∑', color:'#6d5dfc', questions:[
-    ['Сколько будет 7 × 8?', '56', 'Таблица умножения — надёжный друг: семь восьмёрок дают ровно 56.'],
-    ['Периметр квадрата со стороной 9 см — сколько это?', '36 см', 'У квадрата четыре равные стороны: 9 × 4 = 36 сантиметров.'],
-    ['Решите уравнение: 3x + 7 = 22. Чему равно x?', 'x = 5', 'Вычтем 7: 3x = 15. Разделим на 3 — получится 5.']
+    ['Сколько будет 7 × 8?', '56', 'Таблица умножения — надёжный друг: семь восьмёрок дают ровно 56.',
+      ['56','54','48','64']],
+    ['Периметр квадрата со стороной 9 см — сколько это?', '36 см', 'У квадрата четыре равные стороны: 9 × 4 = 36 сантиметров.',
+      ['36 см','18 см','27 см','81 см']],
+    ['Решите уравнение: 3x + 7 = 22. Чему равно x?', 'x = 5', 'Вычтем 7: 3x = 15. Разделим на 3 — получится 5.',
+      ['x = 5','x = 3','x = 7','x = 15']]
   ]},
   {id:'chemistry', title:'Химия', icon:'⚗', color:'#12b3a0', questions:[
-    ['Какой газ делает напитки шипучими?', 'Углекислый газ', 'CO₂ растворяется в воде под давлением, а при открытии бутылки уходит пузырьками.'],
-    ['Какова химическая формула воды?', 'H₂O', 'Два атома водорода и один атом кислорода — формула известна каждому школьнику.'],
-    ['Как называется переход жидкости в пар?', 'Испарение', 'Испарение идёт с поверхности жидкости, а кипение — по всему её объёму.']
+    ['Какой газ делает напитки шипучими?', 'Углекислый газ', 'CO₂ растворяется в воде под давлением, а при открытии бутылки уходит пузырьками.',
+      ['Углекислый газ','Кислород','Азот','Водород']],
+    ['Какова химическая формула воды?', 'H₂O', 'Два атома водорода и один атом кислорода — формула известна каждому школьнику.',
+      ['H₂O','CO₂','NaCl','O₂']],
+    ['Как называется переход жидкости в пар?', 'Испарение', 'Испарение идёт с поверхности жидкости, а кипение — по всему её объёму.',
+      ['Испарение','Замерзание','Конденсация','Плавление']]
   ]},
   {id:'literature', title:'Литература', icon:'📚', color:'#ff6f61', questions:[
-    ['Кто написал роман в стихах «Евгений Онегин»?', 'Александр Пушкин', 'Пушкин работал над романом более семи лет и назвал его «своим лучшим романом».'],
-    ['Как зовут главного героя «Преступления и наказания»?', 'Родион Раскольников', 'Фёдор Достоевский создал образ героя, который мучительно ищет ответы на вопросы о совести.'],
-    ['Кто автор сказки «Конёк-Горбунок»?', 'Пётр Ершов', 'Ершов написал эту сказку в 19 лет, и она стала одним из самых любимых детских произведений.']
+    ['Кто написал роман в стихах «Евгений Онегин»?', 'Александр Пушкин', 'Пушкин работал над романом более семи лет и назвал его «своим лучшим романом».',
+      ['Александр Пушкин','Лев Толстой','Фёдор Достоевский','Иван Тургенев']],
+    ['Как зовут главного героя «Преступления и наказания»?', 'Родион Раскольников', 'Фёдор Достоевский создал образ героя, который мучительно ищет ответы на вопросы о совести.',
+      ['Родион Раскольников','Пьер Безухов','Евгений Онегин','Андрей Болконский']],
+    ['Кто автор сказки «Конёк-Горбунок»?', 'Пётр Ершов', 'Ершов написал эту сказку в 19 лет, и она стала одним из самых любимых детских произведений.',
+      ['Пётр Ершов','Александр Пушкин','Иван Крылов','Сергей Аксаков']]
   ]},
   {id:'russian', title:'Русский', icon:'✍', color:'#f2a72b', questions:[
-    ['Сколько букв в слове «солнце»?', 'Шесть', 'с-о-л-н-ц-е. Часто ошибочно считают пять, забывая про мягкий знак перед «ц».'],
-    ['Какой знак ставится в конце вопросительного предложения?', 'Вопросительный знак', 'Он один из трёх знаков конца предложения: точка, вопросительный и восклицательный.'],
-    ['К какой части речи относится слово «быстро»?', 'Наречие', 'Наречие обычно отвечает на вопрос «как?» и указывает на признак действия.']
+    ['Сколько букв в слове «солнце»?', 'Шесть', 'с-о-л-н-ц-е. Часто ошибочно считают пять, забывая про мягкий знак перед «ц».',
+      ['Шесть','Пять','Семь','Четыре']],
+    ['Какой знак ставится в конце вопросительного предложения?', 'Вопросительный знак', 'Он один из трёх знаков конца предложения: точка, вопросительный и восклицательный.',
+      ['Вопросительный знак','Точка','Запятая','Восклицательный знак']],
+    ['К какой части речи относится слово «быстро»?', 'Наречие', 'Наречие обычно отвечает на вопрос «как?» и указывает на признак действия.',
+      ['Наречие','Прилагательное','Глагол','Существительное']]
   ]},
   {id:'physics', title:'Физика', icon:'⚡', color:'#4a8df5', questions:[
-    ['Что происходит со скоростью автомобиля при торможении?', 'Уменьшается', 'Тормозная сила направлена против движения, поэтому скорость падает.'],
-    ['Как называется прибор для измерения температуры?', 'Термометр', 'Первый практический термометр появился в XVII веке; современные бывают ртутными и электронными.'],
-    ['Звук идёт со скоростью примерно 340 м/с. Сколько времени он летит 340 метров?', '1 секунда', 'Время равно расстоянию, делённому на скорость: 340 / 340 = 1 с.']
+    ['Что происходит со скоростью автомобиля при торможении?', 'Уменьшается', 'Тормозная сила направлена против движения, поэтому скорость падает.',
+      ['Уменьшается','Увеличивается','Не меняется','Сначала растёт']],
+    ['Как называется прибор для измерения температуры?', 'Термометр', 'Первый практический термометр появился в XVII веке; современные бывают ртутными и электронными.',
+      ['Термометр','Барометр','Спидометр','Компас']],
+    ['Звук идёт со скоростью примерно 340 м/с. Сколько времени он летит 340 метров?', '1 секунда', 'Время равно расстоянию, делённому на скорость: 340 / 340 = 1 с.',
+      ['1 секунда','2 секунды','0,5 секунды','34 секунды']]
   ]},
   {id:'history', title:'История', icon:'🏛', color:'#ef6fa8', questions:[
-    ['В каком году началась Великая Отечественная война?', 'В 1941 году', '22 июня 1941 года Германия напала на Советский Союз.'],
-    ['Кто стал первым человеком в космосе?', 'Юрий Гагарин', '12 апреля 1961 года Юрий Гагарин совершил полёт на корабле «Восток-1».'],
-    ['В каком веке жил Александр Невский?', 'В XIII веке', 'Князь Александр Невский прославился победами над шведами и рыцарями Тевтонского ордена.']
+    ['В каком году началась Великая Отечественная война?', 'В 1941 году', '22 июня 1941 года Германия напала на Советский Союз.',
+      ['В 1941 году','В 1939 году','В 1945 году','В 1914 году']],
+    ['Кто стал первым человеком в космосе?', 'Юрий Гагарин', '12 апреля 1961 года Юрий Гагарин совершил полёт на корабле «Восток-1».',
+      ['Юрий Гагарин','Алексей Леонов','Валентина Терешкова','Сергей Королёв']],
+    ['В каком веке жил Александр Невский?', 'В XIII веке', 'Князь Александр Невский прославился победами над шведами и рыцарями Тевтонского ордена.',
+      ['В XIII веке','В XI веке','В XII веке','В XV веке']]
   ]},
   {id:'geo', title:'География', icon:'🌍', color:'#43a978', questions:[
-    ['Какая река самая длинная в России?', 'Лена', 'Длина Лены — около 4400 километров; Волга длиннее в Европе, но короче Лены.'],
-    ['Как называется самая высокая гора мира?', 'Эверест', 'Её высота — 8848 метров над уровнем моря; в Непале её называют Джомолунгма.'],
-    ['Сколько океанов выделяют в современной школьной географии?', 'Пять', 'Тихий, Атлантический, Индийский, Северный Ледовитый и Южный океаны.']
+    ['Какая река самая длинная в России?', 'Лена', 'Длина Лены — около 4400 километров; Волга длиннее в Европе, но короче Лены.',
+      ['Лена','Волга','Енисей','Амур']],
+    ['Как называется самая высокая гора мира?', 'Эверест', 'Её высота — 8848 метров над уровнем моря; в Непале её называют Джомолунгма.',
+      ['Эверест','Аконкагуа','Килиманджаро','Эльбрус']],
+    ['Сколько океанов выделяют в современной школьной географии?', 'Пять', 'Тихий, Атлантический, Индийский, Северный Ледовитый и Южный океаны.',
+      ['Пять','Три','Четыре','Шесть']]
   ]}
 ];
 
@@ -651,7 +671,7 @@ function goHome(){ show('home'); sfx.click(); }
 
 /* ============================ КОМАНДЫ ============================ */
 function setTeam(i){
-  if(ctx&&(ctx.locked||ctx.teamLocked)) return;
+  if(ctx&&(ctx.locked||ctx.revealed)) return;
   state.active=i;
   if(!recipientManual) state.recipient=i;
   save(); updateAll(); sfx.click();
@@ -669,10 +689,6 @@ function award(ok,price){
   state.teams[rec].score=Math.max(0,state.teams[rec].score+(ok?price:-price));
   save(); updateScore(true);
   return name;
-}
-function adjust(score){
-  state.teams[state.recipient].score=Math.max(0,state.teams[state.recipient].score+score);
-  save(); updateScore(true); updateHome(); sfx.click();
 }
 function updateScore(pop){
   [0,1].forEach(i=>{
@@ -694,13 +710,13 @@ function updateScore(pop){
   });
   $$('[data-role="answer"]').forEach(b=>{
     const i=Number(b.dataset.team);
-    b.textContent=state.teams[i].name+(i===state.active?' · ход':'');
+    b.textContent=state.teams[i].name;
     b.classList.toggle('active',i===state.active);
-    b.disabled=!!(ctx&&(ctx.locked||ctx.teamLocked));
+    b.disabled=!!(ctx&&(ctx.locked||ctx.revealed));
   });
   $$('[data-role="receive"]').forEach(b=>{
     const i=Number(b.dataset.team);
-    b.textContent=state.teams[i].name+(i===state.recipient?' · +очки':'');
+    b.textContent=state.teams[i].name;
     b.classList.toggle('active',i===state.recipient);
     b.disabled=!!(ctx&&ctx.locked);
   });
@@ -759,48 +775,56 @@ function closeModal(){
 function resetModal(){
   $('#m-clue').hidden=true;
   $('#m-answer').hidden=true;
-  $('#m-reveal-row').hidden=true;
   $('#m-verdict').hidden=true;
-  $('#m-done-row').hidden=true;
+  $('#m-options').innerHTML='';
   $('#m-note').textContent=''; $('#m-ans').textContent='';
-}
-function showAnswer(text,note){
-  $('#m-ans').textContent=text;
-  $('#m-note').textContent=note;
-  $('#m-answer').hidden=false;
-}
-function finishModal(ok,price){
-  const name=award(ok,price);
-  ctx.locked=true;
-  ctx.teamLocked=true;
-  $('#m-reveal-row').hidden=true; $('#m-verdict').hidden=true; $('#m-done-row').hidden=false;
-  $('#m-done').textContent=ok?'Забрать очки':'Дальше';
-  updateScore();
-  if(ok){ confetti(); sfx.win(); toast(name+' +'+price+' очков'); }
-  else { sfx.bad(); toast(name+' −'+price+' очков'); }
 }
 function openSubject(i,j){
   resetModal();
   const s=SUBJECTS[i], price=PRICES_SUBJECT[j], q=s.questions[j];
   recipientManual=false;
-  ctx={mode:'subject',i,j,price,revealed:false,locked:false,teamLocked:false,data:q,accent:s.color};
+  ctx={mode:'subject',i,j,price,revealed:false,locked:false,chosen:-1,
+       options:shuffle(q[3].map((text,k)=>({text,ok:k===0}))),data:q,accent:s.color};
   $('#m-kicker').textContent=s.title+' · '+price+' очков';
   $('#m-title').textContent='Вопрос за '+price;
   $('#m-clue').textContent=q[0];
   $('#m-clue').hidden=false;
-  $('#m-reveal-row').hidden=false;
+  const box=$('#m-options'); box.hidden=false;
+  ctx.options.forEach((o,k)=>{
+    const b=document.createElement('button');
+    b.type='button'; b.className='ans-opt'; b.dataset.opt=k;
+    b.innerHTML='<span class="key">'+'АБВГ'[k]+'</span><span>'+o.text+'</span>';
+    b.addEventListener('click',()=>chooseSubjectOption(k));
+    box.appendChild(b);
+  });
   openModal(s.color);
   updateAll();
 }
-function revealSubject(){
+function chooseSubjectOption(k){
   if(!ctx||ctx.mode!=='subject'||ctx.revealed) return;
   ctx.revealed=true;
-  ctx.teamLocked=true;
-  $('#m-reveal-row').hidden=true;
+  ctx.chosen=k;
+  const right=ctx.options.findIndex(o=>o.ok);
+  $$('#m-options .ans-opt').forEach((b,idx)=>{
+    b.disabled=true;
+    if(idx===k) b.classList.add('chosen');
+    if(idx===right) b.classList.add('correct');
+    else if(idx===k) b.classList.add('wrong');
+  });
+  $('#m-ans').textContent=ctx.data[1];
+  $('#m-note').textContent=ctx.data[2];
+  $('#m-answer').hidden=false;
   $('#m-verdict').hidden=false;
-  showAnswer(ctx.data[1],ctx.data[2]);
   updateScore();
   sfx.open();
+}
+function finishModal(ok,price){
+  const name=award(ok,price);
+  ctx.locked=true;
+  markPlayed(ctx.i,ctx.j,ok);
+  closeModal();
+  if(ok){ confetti(); sfx.win(); toast(name+' +'+price+' очков'); }
+  else { sfx.bad(); toast(name+' −'+price+' очков'); }
 }
 
 /* ============================ ИГРА «УГАДАЙ МОМЕНТ» ============================ */
@@ -860,7 +884,7 @@ function renderMoments(){
     ctx.options.forEach((o,k)=>{
       const b=document.createElement('button');
       b.type='button'; b.className='moments-opt'; b.dataset.opt=k;
-      b.innerHTML='<span class="key">'+'ASDF'[k]+'</span><span>'+o.text+'</span>';
+      b.innerHTML='<span class="key">'+'АБВГ'[k]+'</span><span>'+o.text+'</span>';
       b.addEventListener('click',()=>answerMoment(k));
       box.appendChild(b);
     });
@@ -951,18 +975,6 @@ $('#btn-sound').addEventListener('click',()=>{
   $('#btn-sound').setAttribute('aria-label',state.sound?'Выключить звук':'Включить звук');
   if(state.sound) sfx.click();
 });
-$('#btn-new-all').addEventListener('click',()=>{
-  state=fresh(); save(); recipientManual=false; closeModal();
-  renderSubject(); renderMoments(); updateAll(); toast('Новая игра!'); sfx.open();
-});
-$$('[data-reset]').forEach(b=>b.addEventListener('click',()=>{
-  const mode=b.dataset.reset;
-  state.played[mode]={}; save();
-  mode==='subject'?renderSubject():null;
-  toast('Новая доска'); sfx.click();
-}));
-$('#moment-new').addEventListener('click',restartMoments);
-$('#moment-reset').addEventListener('click',restartMoments);
 $('#moment-again').addEventListener('click',restartMoments);
 $('#moment-next').addEventListener('click',nextMoment);
 $('#btn-recipient').addEventListener('click',toggleRecipient);
@@ -975,52 +987,23 @@ $$('.team-name').forEach(inp=>inp.addEventListener('input',()=>{
   state.teams[i].name=inp.value.trim()||('Команда '+(i+1));
   save(); updateScore(); updateHome();
 }));
-$$('.adj').forEach(b=>b.addEventListener('click',()=>adjust(Number(b.dataset.adj))));
-$('#btn-clear').addEventListener('click',()=>{
-  state.teams.forEach(t=>t.score=0); save(); updateScore(true); updateHome(); toast('Счёт обнулён'); sfx.click();
-});
 $('#m-close').addEventListener('click',()=>{closeModal();sfx.click()});
 $('.modal-backdrop').addEventListener('click',()=>{closeModal();sfx.click()});
-$('#m-reveal').addEventListener('click',revealSubject);
 $('#m-yes').addEventListener('click',()=>{
-  if(!ctx||ctx.locked||ctx.mode!=='subject') return;
-  markPlayed(ctx.i,ctx.j,true);
+  if(!ctx||ctx.locked||ctx.mode!=='subject'||!ctx.revealed) return;
   finishModal(true,ctx.price);
 });
 $('#m-no').addEventListener('click',()=>{
-  if(!ctx||ctx.locked||ctx.mode!=='subject') return;
-  markPlayed(ctx.i,ctx.j,false);
+  if(!ctx||ctx.locked||ctx.mode!=='subject'||!ctx.revealed) return;
   finishModal(false,ctx.price);
 });
-$('#m-done').addEventListener('click',()=>{closeModal();sfx.click()});
 $$('[data-role="answer"]').forEach(b=>b.addEventListener('click',()=>setTeam(Number(b.dataset.team))));
 $$('[data-role="receive"]').forEach(b=>b.addEventListener('click',()=>setRecipient(Number(b.dataset.team))));
 
 addEventListener('keydown',e=>{
-  if(/^(input|textarea|select)$/i.test(e.target.tagName)) return;
-  const k=e.key.toLowerCase();
-  if(k==='escape'){
-    if($('#modal').classList.contains('open')) closeModal();
-    else if(current!=='home') goHome();
-    return;
-  }
-  if(k==='1'){ setTeam(0); return; }
-  if(k==='2'){ setTeam(1); return; }
-  if(k==='q'){ setRecipient(0); return; }
-  if(k==='w'){ setRecipient(1); return; }
-  if(!$('#modal').classList.contains('open') && current!=='moments') return;
-  if(k==='enter'){
-    if($('#modal').classList.contains('open')){
-      if(ctx?.mode==='subject'&&!ctx.revealed) revealSubject();
-      else if(ctx?.locked) closeModal();
-    }else if(ctx?.mode==='moment'&&ctx.answered) nextMoment();
-    return;
-  }
-  const idx='asdfфывс'.indexOf(k);
-  if(idx>=0 && idx<4){
-    if($('#modal').classList.contains('open')) return;
-    if(ctx?.mode==='moment'&&!ctx.answered){ e.preventDefault(); answerMoment(idx); }
-  }
+  if(e.key!=='Escape') return;
+  if($('#modal').classList.contains('open')) closeModal();
+  else if(current!=='home') goHome();
 });
 
 /* ============================ СТАРТ ============================ */
