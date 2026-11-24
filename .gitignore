@@ -1,0 +1,5 @@
+_incoming/
+_*.py
+_*.ps1
+__pycache__/
+.gitmsg

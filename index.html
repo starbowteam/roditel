@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Дети родителей — семейный квиз</title>
-<meta name="description" content="Дети родителей: семейный квиз на 7 предметов и игра «Угадай момент» с 10 постерами для двух команд.">
+<meta name="description" content="Дети родителей: семейный квиз на 5 предметов и игра «Угадай момент» со всеми афишами для двух команд.">
 <meta name="theme-color" content="#f7f4ff">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='9' fill='%236d5dfc'/><text x='16' y='24' font-family='Arial' font-size='19' font-weight='bold' fill='white' text-anchor='middle'>?</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -126,8 +126,8 @@ h3{font-size:18px;line-height:1.25}
 /* ---------- доска предметов ---------- */
 .screen-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:18px;flex-wrap:wrap}
 .board-wrap{overflow-x:auto;padding:4px 2px 12px;scrollbar-width:thin}
-.board{--tile-w:clamp(104px,11vw,132px);display:grid;gap:9px;width:max-content;margin:0 auto}
-.board-subject{grid-template-columns:repeat(7,var(--tile-w))}
+.board{--tile-w:clamp(112px,13vw,150px);display:grid;gap:9px;width:max-content;margin:0 auto}
+.board-subject{grid-template-columns:repeat(5,var(--tile-w))}
 .board-head{min-height:92px;padding:12px 8px;border-radius:16px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-s);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
 .board-head::before{content:"";position:absolute;inset:0 0 auto;height:4px;background:var(--accent)}
 .board-head .hi{font-size:20px;line-height:1}
@@ -310,20 +310,20 @@ h3{font-size:18px;line-height:1.25}
     <div class="home-hero">
       <p class="kicker">Семейная игра для всей компании</p>
       <h1>Дети родителей<br><span class="accent-text">семейный квиз</span></h1>
-      <p class="lead">Выберите игру: доска на семь предметов или «Угадай момент» с десятью постерами. Очки можно начислить любой команде.</p>
+      <p class="lead">Выберите игру: доска на пять предметов или «Угадай момент» со всеми афишами. Очки можно начислить любой команде.</p>
     </div>
 
     <div class="modes">
       <button id="go-subject" class="mode" type="button" style="--accent:var(--violet)">
         <div class="mode-icon">🧠</div>
-        <h3>Квиз: 7 предметов</h3>
-        <p>Настоящая телевикторина: 7 тем, вопросы за 100, 200 и 300 очков. Две команды, выбор отвечающего и счёт на виду.</p>
+        <h3>Квиз: 5 предметов</h3>
+        <p>Настоящая телевикторина: 5 тем, вопросы за 100, 200, 300 и 400 очков. Две команды, выбор отвечающего и счёт на виду.</p>
         <span class="mode-go">Открыть доску <span>→</span></span>
       </button>
       <button id="go-moments" class="mode" type="button" style="--accent:var(--coral)">
         <div class="mode-icon">🎬</div>
         <h3>Угадай момент</h3>
-        <p>Не доска, а история из 10 фильмов: сначала забавная пародия на афишу, потом 4 варианта и оригинальный постер.</p>
+        <p>Не доска, а история про все фильмы: сначала забавная пародия на афишу, потом 4 варианта и оригинальный постер.</p>
         <span class="mode-go">Начать игру <span>→</span></span>
       </button>
     </div>
@@ -340,7 +340,7 @@ h3{font-size:18px;line-height:1.25}
     <div class="screen-head">
       <div>
         <p class="kicker">Режим 01 · доска</p>
-        <h2>Квиз: 7 предметов</h2>
+        <h2>Квиз: 5 предметов</h2>
         <p class="lead">Откройте клетку, выберите вариант ответа и оцените его. Очки можно направить любой команде.</p>
       </div>
     </div>
@@ -353,7 +353,7 @@ h3{font-size:18px;line-height:1.25}
         <div>
           <p class="kicker">Режим 02 · кино</p>
           <h2>Угадай момент</h2>
-          <p class="lead">10 фильмов. Сначала — искажённая пародия на афишу, затем 4 варианта названия. После ответа появится оригинальный постер.</p>
+          <p class="lead">Все фильмы по порядку. Сначала — искажённая пародия на афишу, затем 4 варианта названия. Ошибся — ход переходит к другой команде; после ответа появится оригинальный постер.</p>
         </div>
       </div>
 
@@ -443,117 +443,133 @@ h3{font-size:18px;line-height:1.25}
 /* Верный вариант всегда первый — перед показом варианты перемешиваются */
 const SUBJECTS = [
   {id:'math', title:'Математика', icon:'∑', color:'#6d5dfc', questions:[
-    ['Сколько будет 7 × 8?', '56', 'Таблица умножения — надёжный друг: семь восьмёрок дают ровно 56.',
-      ['56','54','48','64']],
-    ['Периметр квадрата со стороной 9 см — сколько это?', '36 см', 'У квадрата четыре равные стороны: 9 × 4 = 36 сантиметров.',
-      ['36 см','18 см','27 см','81 см']],
-    ['Решите уравнение: 3x + 7 = 22. Чему равно x?', 'x = 5', 'Вычтем 7: 3x = 15. Разделим на 3 — получится 5.',
-      ['x = 5','x = 3','x = 7','x = 15']]
-  ]},
-  {id:'chemistry', title:'Химия', icon:'⚗', color:'#12b3a0', questions:[
-    ['Какой газ делает напитки шипучими?', 'Углекислый газ', 'CO₂ растворяется в воде под давлением, а при открытии бутылки уходит пузырьками.',
-      ['Углекислый газ','Кислород','Азот','Водород']],
-    ['Какова химическая формула воды?', 'H₂O', 'Два атома водорода и один атом кислорода — формула известна каждому школьнику.',
-      ['H₂O','CO₂','NaCl','O₂']],
-    ['Как называется переход жидкости в пар?', 'Испарение', 'Испарение идёт с поверхности жидкости, а кипение — по всему её объёму.',
-      ['Испарение','Замерзание','Конденсация','Плавление']]
-  ]},
-  {id:'literature', title:'Литература', icon:'📚', color:'#ff6f61', questions:[
-    ['Кто написал роман в стихах «Евгений Онегин»?', 'Александр Пушкин', 'Пушкин работал над романом более семи лет и назвал его «своим лучшим романом».',
-      ['Александр Пушкин','Лев Толстой','Фёдор Достоевский','Иван Тургенев']],
-    ['Как зовут главного героя «Преступления и наказания»?', 'Родион Раскольников', 'Фёдор Достоевский создал образ героя, который мучительно ищет ответы на вопросы о совести.',
-      ['Родион Раскольников','Пьер Безухов','Евгений Онегин','Андрей Болконский']],
-    ['Кто автор сказки «Конёк-Горбунок»?', 'Пётр Ершов', 'Ершов написал эту сказку в 19 лет, и она стала одним из самых любимых детских произведений.',
-      ['Пётр Ершов','Александр Пушкин','Иван Крылов','Сергей Аксаков']]
-  ]},
-  {id:'russian', title:'Русский', icon:'✍', color:'#f2a72b', questions:[
-    ['Сколько букв в слове «солнце»?', 'Шесть', 'с-о-л-н-ц-е. Часто ошибочно считают пять, забывая про мягкий знак перед «ц».',
-      ['Шесть','Пять','Семь','Четыре']],
-    ['Какой знак ставится в конце вопросительного предложения?', 'Вопросительный знак', 'Он один из трёх знаков конца предложения: точка, вопросительный и восклицательный.',
-      ['Вопросительный знак','Точка','Запятая','Восклицательный знак']],
-    ['К какой части речи относится слово «быстро»?', 'Наречие', 'Наречие обычно отвечает на вопрос «как?» и указывает на признак действия.',
-      ['Наречие','Прилагательное','Глагол','Существительное']]
+    ['Чему равен √81?', '9', 'Квадратный корень из 81 равен 9: 9 × 9 = 81.',
+      ['9','7','8','10']],
+    ['Сколько будет 12 × 8 − 16?', '80', 'Сначала умножение: 12 × 8 = 96, затем вычитаем 16 — получаем 80.',
+      ['80','72','96','64']],
+    ['У Маши было 500 рублей. Она потратила 20% денег. Сколько рублей у неё осталось?', '400 рублей', '20% от 500 — это 100 рублей. 500 − 100 = 400.',
+      ['400 рублей','300 рублей','350 рублей','450 рублей']],
+    ['Сколько минут в двух с половиной часах?', '150 минут', 'В одном часе 60 минут: 2,5 × 60 = 150.',
+      ['150 минут','120 минут','180 минут','200 минут']]
   ]},
   {id:'physics', title:'Физика', icon:'⚡', color:'#4a8df5', questions:[
-    ['Что происходит со скоростью автомобиля при торможении?', 'Уменьшается', 'Тормозная сила направлена против движения, поэтому скорость падает.',
-      ['Уменьшается','Увеличивается','Не меняется','Сначала растёт']],
-    ['Как называется прибор для измерения температуры?', 'Термометр', 'Первый практический термометр появился в XVII веке; современные бывают ртутными и электронными.',
-      ['Термометр','Барометр','Спидометр','Компас']],
-    ['Звук идёт со скоростью примерно 340 м/с. Сколько времени он летит 340 метров?', '1 секунда', 'Время равно расстоянию, делённому на скорость: 340 / 340 = 1 с.',
-      ['1 секунда','2 секунды','0,5 секунды','34 секунды']]
+    ['Что измеряется в градусах Цельсия?', 'Температура', 'Градус Цельсия — единица температуры; 0 °C — точка замерзания воды.',
+      ['Температура','Скорость','Масса','Сила']],
+    ['Что падает на землю из-за силы тяжести?', 'Все тела', 'Сила тяжести действует на любое тело с массой; сопротивление воздуха лишь меняет скорость падения.',
+      ['Все тела','Только камни','Только вода','Только тяжёлые предметы']],
+    ['Почему пассажира в автобусе при резком торможении наклоняет вперёд?', 'Из-за инерции', 'Тело сохраняет скорость движения, а автобус резко замедляется — поэтому пассажир наклоняется вперёд.',
+      ['Из-за инерции','Из-за силы тяжести','Из-за трения','Из-за давления воздуха']],
+    ['В каких единицах измеряется сила?', 'В ньютонах', 'Один ньютон — сила, которая сообщает телу массой 1 кг ускорение 1 м/с².',
+      ['В ньютонах','В джоулях','В ваттах','В паскалях']]
   ]},
-  {id:'history', title:'История', icon:'🏛', color:'#ef6fa8', questions:[
-    ['В каком году началась Великая Отечественная война?', 'В 1941 году', '22 июня 1941 года Германия напала на Советский Союз.',
-      ['В 1941 году','В 1939 году','В 1945 году','В 1914 году']],
-    ['Кто стал первым человеком в космосе?', 'Юрий Гагарин', '12 апреля 1961 года Юрий Гагарин совершил полёт на корабле «Восток-1».',
-      ['Юрий Гагарин','Алексей Леонов','Валентина Терешкова','Сергей Королёв']],
-    ['В каком веке жил Александр Невский?', 'В XIII веке', 'Князь Александр Невский прославился победами над шведами и рыцарями Тевтонского ордена.',
-      ['В XIII веке','В XI веке','В XII веке','В XV веке']]
+  {id:'chemistry', title:'Химия', icon:'⚗', color:'#12b3a0', questions:[
+    ['Какой химический элемент обозначается символом «O»?', 'Кислород', 'O — Oxygenium, кислород. Золото обозначается Au, осмий — Os, олово — Sn.',
+      ['Кислород','Золото','Осмий','Олово']],
+    ['Что изучает химия?', 'Вещества и их превращения', 'Химия изучает состав, строение и превращения веществ.',
+      ['Вещества и их превращения','Живые организмы','Движение планет','Строение атома']],
+    ['Самый лёгкий газ?', 'Водород', 'Водород — самый лёгкий элемент: его атомная масса около 1. Натрий — металл, а не газ.',
+      ['Водород','Кислород','Натрий','Азот']],
+    ['Какова химическая формула поваренной соли?', 'NaCl', 'Поваренная соль — хлорид натрия NaCl.',
+      ['NaCl','H₂O','CO₂','O₂']]
   ]},
-  {id:'geo', title:'География', icon:'🌍', color:'#43a978', questions:[
-    ['Какая река самая длинная в России?', 'Лена', 'Длина Лены — около 4400 километров; Волга длиннее в Европе, но короче Лены.',
-      ['Лена','Волга','Енисей','Амур']],
-    ['Как называется самая высокая гора мира?', 'Эверест', 'Её высота — 8848 метров над уровнем моря; в Непале её называют Джомолунгма.',
-      ['Эверест','Аконкагуа','Килиманджаро','Эльбрус']],
-    ['Сколько океанов выделяют в современной школьной географии?', 'Пять', 'Тихий, Атлантический, Индийский, Северный Ледовитый и Южный океаны.',
-      ['Пять','Три','Четыре','Шесть']]
+  {id:'russian', title:'Русский и литература', icon:'📚', color:'#ff6f61', questions:[
+    ['Сколько гласных букв в русском алфавите?', '10', 'В русском алфавите 10 гласных, 21 согласная и 2 буквы без звука — всего 33.',
+      ['10','5','21','33']],
+    ['Как правильно поставить ударение: звОнит или звонИт?', 'звонИт', 'Литературная норма — звонИт. Запомнить помогает фраза: «ЗвонИт телефон, а не звОнит».',
+      ['звонИт','звОнит','кладёт','торты']],
+    ['В каком слове букв больше, чем звуков?', 'тень', 'В слове «тень» 4 буквы, но 3 звука: [т’эн’]. Мягкий знак звука не обозначает.',
+      ['тень','яблоко','юла','маяк']],
+    ['Кто написал повесть «Муму»?', 'Иван Тургенев', 'Тургенев написал «Муму» в 1852 году; в основе сюжета — реальная история дворника Андрея.',
+      ['Иван Тургенев','Александр Пушкин','Лев Толстой','Антон Чехов']]
+  ]},
+  {id:'history', title:'История и география', icon:'🌍', color:'#43a978', questions:[
+    ['Какое событие произошло на Руси в 988 году?', 'Крещение Руси', 'В 988 году князь Владимир принял христианство и крестил Русь.',
+      ['Крещение Руси','Ледовое побоище','Отмена крепостного права','Начало Смуты']],
+    ['Какого русского царя прозвали Грозным?', 'Иван Грозный', 'Иван IV получил прозвище Грозный за жёсткое правление и борьбу с боярами.',
+      ['Иван Грозный','Владимир Красное Солнышко','Лжедмитрий','Пётр I']],
+    ['Какой самый большой материк на Земле?', 'Евразия', 'Евразия занимает около 54 млн км² — больше Африки и Северной Америки вместе.',
+      ['Евразия','Африка','Северная Америка','Антарктида']],
+    ['Какая столица Канады?', 'Оттава', 'Оттава — столица Канады; город был выбран резиденцией правительства ещё в 1857 году, хотя Торонто и Монреаль крупнее.',
+      ['Оттава','Торонто','Ванкувер','Монреаль']]
   ]}
 ];
 
 /* correct всегда первый — перед показом вариант перемешиваются */
 const MOMENTS = [
-  {id:'captive', title:'Кавказская пленница', year:'1967', accent:'#ff6f61',
-   parody:'images/posters/captive-parody.jpg', poster:'images/posters/captive.jpg',
-   options:['Кавказская пленница','Бриллиантовая рука','Операция «Ы»','Иван Васильевич меняет профессию'],
-   note:'Леонид Гайдай снимал комедию о студенте Шурике и традициях похищения невест. Картина вышла в 1967 году.'},
-  {id:'diamond', title:'Бриллиантовая рука', year:'1969', accent:'#12b3a0',
-   parody:'images/posters/diamond-parody.jpg', poster:'images/posters/diamond.jpg',
-   options:['Бриллиантовая рука','Кавказская пленница','Гараж','Мимино'],
-   note:'Юрий Никулин и Андрей Миронов сыграли контрабандистов; знаменитая сцена с чемоданами снималась на курорте.'},
-  {id:'ivan', title:'Иван Васильевич меняет профессию', year:'1973', accent:'#6d5dfc',
-   parody:'images/posters/ivan-parody.jpg', poster:'images/posters/ivan.jpg',
-   options:['Иван Васильевич меняет профессию','Ирония судьбы','Бриллиантовая рука','Кавказская пленница'],
-   note:'Машина времени переносит управдома в XVI век, а царя — в современную квартиру. Роль царя сыграл Яков Степанов.'},
-  {id:'office', title:'Служебный роман', year:'1977', accent:'#f2a72b',
-   parody:'images/posters/office-parody.jpg', poster:'images/posters/office.jpg',
-   options:['Служебный роман','Гараж','Ирония судьбы','Джентльмены удачи'],
-   note:'Эльдар Рязанов снял историю о строгой начальнице и застенчивом Новосельцеве. В кадре — съёмочная группа фильма.'},
-  {id:'irony', title:'Ирония судьбы', year:'1975', accent:'#4a8df5',
-   parody:'images/posters/irony-parody.jpg', poster:'images/posters/irony.jpg',
-   options:['Ирония судьбы','Служебный роман','Мимино','Небесные ласточки'],
-   note:'Новогодняя комедия про Женю Лукашина, который по ошибке оказался в чужой ленинградской квартире.'},
-  {id:'guest', title:'Гостья из будущего', year:'1985', accent:'#43a978',
-   parody:'images/posters/guest-parody.jpg', poster:'images/posters/guest.jpg',
-   options:['Гостья из будущего','Приключения Электроника','Тимур и его команда','Ералаш'],
-   note:'Алиса Селезнёва и её друг Коля приехали из будущего, чтобы помешать космическим пиратам.'},
-  {id:'electro', title:'Приключения Электроника', year:'1979', accent:'#ef6fa8',
-   parody:'images/posters/electro-parody.jpg', poster:'images/posters/electro.jpg',
-   options:['Приключения Электроника','Гостья из будущего','Тимур и его команда','Сказка о царе Салтане'],
-   note:'Учитель физики создал робота-двойника школьника Сыроежкина — и началась череда забавных недоразумений.'},
-  {id:'timur', title:'Тимур и его команда', year:'1940', accent:'#12b3a0',
-   parody:'images/posters/timur-parody.jpg', poster:'images/posters/timur.jpg',
-   options:['Тимур и его команда','Приключения Электроника','Гостья из будущего','Служебный роман'],
-   note:'Фильм по повести Аркадия Гайдара: школьники тайно помогают семьям красноармейцев.'},
-  {id:'saltan', title:'Сказка о царе Салтане', year:'1916', accent:'#f2a72b',
-   parody:'images/posters/saltan-parody.jpg', poster:'images/posters/saltan.jpg',
-   options:['Сказка о царе Салтане','Сказка о рыбаке и рыбке','Конёк-Горбунок','Аленький цветочек'],
-   note:'Одна из первых экранизаций пушкинской сказки вышла в 1916 году; беличья капка с золотыми орешками — самый известный эпизод.'},
-  {id:'pooh', title:'Винни-Пух', year:'1969', accent:'#6d5dfc',
-   parody:'images/posters/pooh-parody.jpg', poster:'images/posters/pooh.jpg',
-   options:['Винни-Пух','Сказка о царе Салтане','Гостья из будущего','Тимур и его команда'],
-   note:'Советский мультфильм по Алану Милну появился в 1969 году; медведь навсегда остался любителем мёда.'}
+  {id:'polosatyy-reys', title:'Полосатый рейс', year:'1961', accent:'#f2a72b',
+   parody:'images/posters/parody/polosatyy-reys.jpg', poster:'images/posters/original/polosatyy-reys.jpg',
+   options:['Полосатый рейс','Бриллиантовая рука','Кавказская пленница','Девчата'],
+   note:'Комедия о рейсе с тиграми на борту; тигров дрессировала Маргарита Назарова, которая сама снималась в фильме.'},
+  {id:'devchata', title:'Девчата', year:'1961', accent:'#ff6f61',
+   parody:'images/posters/parody/devchata.jpg', poster:'images/posters/original/devchata.jpg',
+   options:['Девчата','Москва слезам не верит','Вам и не снилось','Чародеи'],
+   note:'Фильм Юрия Чулюкина по повести Бориса Бедного; Надежда Румянцева сыграла повариху Тосю Кислицыну.'},
+  {id:'operatsiya-y', title:'Операция «Ы»', year:'1965', accent:'#6d5dfc',
+   parody:'images/posters/parody/operatsiya-y.jpg', poster:'images/posters/original/operatsiya-y.jpg',
+   options:['Операция «Ы»','Кавказская пленница','Бриллиантовая рука','Ирония судьбы'],
+   note:'Первая новелла о Шурике; Леонид Гайдай снял комедию в 1965 году, а фраза «Надо, Федя, надо!» стала крылатой.'},
+  {id:'kavkazskaya-plennitsa', title:'Кавказская пленница', year:'1966', accent:'#43a978',
+   parody:'images/posters/parody/kavkazskaya-plennitsa.jpg', poster:'images/posters/original/kavkazskaya-plennitsa.jpg',
+   options:['Кавказская пленница','Операция «Ы»','Бриллиантовая рука','Полосатый рейс'],
+   note:'Продолжение приключений Шурика; Наталья Варлей исполнила роль Нины, а «Песенку о медведях» знают все.'},
+  {id:'brilliantovaya-ruka', title:'Бриллиантовая рука', year:'1968', accent:'#12b3a0',
+   parody:'images/posters/parody/brilliantovaya-ruka.jpg', poster:'images/posters/original/brilliantovaya-ruka.jpg',
+   options:['Бриллиантовая рука','Кавказская пленница','Ирония судьбы','Москва слезам не верит'],
+   note:'Юрий Никулин сыграл Семёна Семёновича Горбункова; сцена с чемоданами и фраза «Шеф, всё пропало!» вошли в золотой фонд.'},
+  {id:'ironiya-sudby', title:'Ирония судьбы', year:'1975', accent:'#4a8df5',
+   parody:'images/posters/parody/ironiya-sudby.jpg', poster:'images/posters/original/ironiya-sudby.jpg',
+   options:['Ирония судьбы','Москва слезам не верит','Служебный роман','Вам и не снилось'],
+   note:'Новогодняя комедия Эльдара Рязанова; Женя Лукашин по ошибке улетел в Ленинград и попал в чужую квартиру.'},
+  {id:'mama', title:'Мама', year:'1976', accent:'#f2a72b',
+   parody:'images/posters/parody/mama.jpg', poster:'images/posters/original/mama.jpg',
+   options:['Мама','Чародеи','Гостья из будущего','Приключения Петрова и Васечкина'],
+   note:'Музыкальная сказка Элизабеты Бостан по мотивам «Волка и семерых козлят»; в фильме снимались Людмила Гурченко, Михаил Боярский и Олег Попов.'},
+  {id:'sluzhebnyy-roman', title:'Служебный роман', year:'1977', accent:'#e46bb3',
+   parody:'images/posters/parody/sluzhebnyy-roman.jpg', poster:'images/posters/original/sluzhebnyy-roman.jpg',
+   options:['Служебный роман','Ирония судьбы','Москва слезам не верит','Девчата'],
+   note:'Классика Эльдара Рязанова: Алиса Фрейндлих и Андрей Мягков в истории про статистичку Калугину и её начальника Новосельцева.'},
+  {id:'moskva-slezam-ne-verit', title:'Москва слезам не верит', year:'1979', accent:'#ef6fa8',
+   parody:'images/posters/parody/moskva-slezam-ne-verit.jpg', poster:'images/posters/original/moskva-slezam-ne-verit.jpg',
+   options:['Москва слезам не верит','Девчата','Ирония судьбы','Чародеи'],
+   note:'Фильм Владимира Меньшова получил «Оскар» как лучший иностранный фильм; Вера Алентова сыграла Катерину Тихомирову.'},
+  {id:'vam-i-ne-snilos', title:'Вам и не снилось', year:'1980', accent:'#ff6f61',
+   parody:'images/posters/parody/vam-i-ne-snilos.jpg', poster:'images/posters/original/vam-i-ne-snilos.jpg',
+   options:['Вам и не снилось','Девчата','Гостья из будущего','Чародеи'],
+   note:'История Ромео и Джульетты из советской школы; фильм снят по повести Галины Щербаковой.'},
+  {id:'charodei', title:'Чародеи', year:'1982', accent:'#6d5dfc',
+   parody:'images/posters/parody/charodei.jpg', poster:'images/posters/original/charodei.jpg',
+   options:['Чародеи','Гостья из будущего','Ирония судьбы','Полосатый рейс'],
+   note:'Новогодняя сказка по мотивам братьев Стругацких; в фильме звучит «Три белых коня».'},
+  {id:'petrov-i-vasechkin', title:'Приключения Петрова и Васечкина', year:'1983', accent:'#4a8df5',
+   parody:'images/posters/parody/petrov-i-vasechkin.jpg', poster:'images/posters/original/petrov-i-vasechkin.jpg',
+   options:['Приключения Петрова и Васечкина','Гостья из будущего','Чародеи','Вам и не снилось'],
+   note:'Музыкальный телефильм о приключениях двух третьеклассников; Петрова сыграл Дмитрий Барков, Васечкина — Егор Дружинин.'},
+  {id:'gostya-iz-budushchego', title:'Гостья из будущего', year:'1985', accent:'#43a978',
+   parody:'images/posters/parody/gostya-iz-budushchego.jpg', poster:'images/posters/original/gostya-iz-budushchego.jpg',
+   options:['Гостья из будущего','Чародеи','Вам и не снилось','Приключения Петрова и Васечкина'],
+   note:'Алиса Селезнёва и Коля Герасимов; песня «Прекрасное далёко» и космические пираты Весельчак У и Крыс.'},
+  {id:'ivan-vasilevich', title:'Иван Васильевич меняет профессию', year:'1973', accent:'#12b3a0',
+   parody:'images/posters/parody/ivan-vasilevich.jpg', poster:'images/posters/original/ivan-vasilevich.jpg',
+   options:['Иван Васильевич меняет профессию','Операция «Ы»','Кавказская пленница','Гостья из будущего'],
+   note:'Комедия Леонида Гайдая: изобретатель Шурик и царь Иван Грозный меняются местами; фраза «Я не хочу, я не могу!» стала крылатой.'}
 ];
 
-const PRICES_SUBJECT = [100,200,300];
+const ROUND_SIZE = MOMENTS.length;
+const PRICES_SUBJECT = [100,200,300,400];
 const MOMENT_PRICE = 100;
 
 /* ============================ СОСТОЯНИЕ ============================ */
-const KEY = 'roditel.quiz.v3';
-const OLD_KEY = 'roditel.quiz.v2';
+const KEY = 'roditel.quiz.v5';
+const OLD_KEY = 'roditel.quiz.v4';
+const OLD_KEY2 = 'roditel.quiz.v3';
 const $ = (s, root=document) => root.querySelector(s);
 const $$ = (s, root=document) => [...root.querySelectorAll(s)];
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+function makeOrder(){
+  const total=Math.min(ROUND_SIZE,MOMENTS.length);
+  return shuffle(MOMENTS.map((_,i)=>i)).slice(0,total);
+}
 function fresh(){
   return {
     teams:[{name:'Команда 1',score:0},{name:'Команда 2',score:0}],
@@ -561,31 +577,47 @@ function fresh(){
     recipient:0,
     played:{subject:{}},
     sound:true,
-    moments:{index:0,answered:[],done:false}
+    moments:{index:0,order:makeOrder(),answered:[],done:false,pending:{index:-1,tries:[]}}
   };
 }
 function load(){
   try{
-    const raw = localStorage.getItem(KEY) || localStorage.getItem(OLD_KEY);
-    if(!raw) return fresh();
-    const d = JSON.parse(raw);
+    const raw = localStorage.getItem(KEY);
+    const legacy = raw ? null : (localStorage.getItem(OLD_KEY) || localStorage.getItem(OLD_KEY2));
+    if(!raw && !legacy) return fresh();
+    const d = JSON.parse(raw || legacy);
     const base = fresh();
-    const answered = Array.isArray(d.moments?.answered)
-      ? d.moments.answered.slice(0,MOMENTS.length).map(v=>(v&&typeof v==='object')?v:null)
+    const teams = [
+      {...base.teams[0],...(d.teams?.[0]||{}),score:Number(d.teams?.[0]?.score)||0},
+      {...base.teams[1],...(d.teams?.[1]||{}),score:Number(d.teams?.[1]?.score)||0}
+    ];
+    const active = d.active===1?1:0;
+    const recipient = d.recipient===1?1:(active===1?1:0);
+    const sound = d.sound!==false;
+    if(!raw){
+      // Старый прогресс относится к прежним вопросам и афишам — переносим только команды и звук.
+      return {...base, teams, active, recipient, sound};
+    }
+    const savedOrder = Array.isArray(d.moments?.order)
+      ? d.moments.order.filter(n=>Number.isInteger(n)&&n>=0&&n<MOMENTS.length)
       : [];
-    let index = Math.max(0,Math.min(MOMENTS.length-1,Number(d.moments?.index)||0));
-    while(index<MOMENTS.length && answered[index]) index++;
-    const done = !!d.moments?.done || answered.filter(Boolean).length>=MOMENTS.length;
+    const order = savedOrder.length===Math.min(ROUND_SIZE,MOMENTS.length) ? savedOrder : makeOrder();
+    const answered = Array.isArray(d.moments?.answered)
+      ? d.moments.answered.slice(0,order.length).map(v=>(v&&typeof v==='object')?v:null)
+      : [];
+    let index = Math.max(0,Math.min(order.length-1,Number(d.moments?.index)||0));
+    while(index<order.length && answered[index]) index++;
+    const done = !!d.moments?.done || answered.filter(Boolean).length>=order.length;
+    const savedPending = d.moments?.pending;
+    const pending = (!done && savedPending && Number.isInteger(savedPending.index) &&
+      Array.isArray(savedPending.tries) && savedPending.tries.length<=2)
+      ? {index:savedPending.index,tries:savedPending.tries.filter(t=>t&&typeof t==='object')}
+      : {index:-1,tries:[]};
     return {
-      teams:[
-        {...base.teams[0],...(d.teams?.[0]||{}),score:Number(d.teams?.[0]?.score)||0},
-        {...base.teams[1],...(d.teams?.[1]||{}),score:Number(d.teams?.[1]?.score)||0}
-      ],
-      active:d.active===1?1:0,
-      recipient:d.recipient===1?1:(d.active===1?1:0),
+      teams, active, recipient,
       played:{subject:d.played?.subject||{}},
-      sound:d.sound!==false,
-      moments:{index:done?MOMENTS.length-1:index,answered,done}
+      sound,
+      moments:{index:done?order.length-1:index,order,answered,done,pending}
     };
   }catch(e){ return fresh(); }
 }
@@ -835,22 +867,27 @@ function shuffle(arr){
 }
 function renderDots(idx,rec){
   const box=$('#moment-dots'); box.innerHTML='';
-  state.moments.answered.slice(0,MOMENTS.length).forEach((a,k)=>{
+  const total=state.moments.order.length;
+  state.moments.answered.slice(0,total).forEach((a,k)=>{
     const dot=document.createElement('i');
     if(a) dot.className=a.ok?'ok':'bad';
     else if(k===idx) dot.className='now';
     box.appendChild(dot);
   });
-  while(box.children.length<MOMENTS.length) box.appendChild(document.createElement('i'));
+  while(box.children.length<total) box.appendChild(document.createElement('i'));
 }
 function renderMoments(){
   if(state.moments.done){ renderMomentDone(); return; }
-  const idx=state.moments.index, m=MOMENTS[idx], rec=state.moments.answered[idx];
+  const total=state.moments.order.length;
+  const idx=state.moments.index;
+  const m=MOMENTS[state.moments.order[idx]];
+  const rec=state.moments.answered[idx];
   recipientManual=false;
-  ctx={mode:'moment',index:idx,data:m,options:rec?[]:shuffle(m.options.map((text,k)=>({text,ok:k===0}))),answered:!!rec,locked:!!rec,accent:m.accent};
+  const pending = rec ? [] : (state.moments.pending?.index===idx ? (state.moments.pending.tries||[]) : []);
+  ctx={mode:'moment',index:idx,data:m,options:rec?[]:shuffle(m.options.map((text,k)=>({text,ok:k===0}))),answered:!!rec,locked:!!rec||pending.length>0,tries:[...pending],accent:m.accent};
   $('#moment-game').hidden=false;
   $('#moment-done').hidden=true;
-  $('#moment-step').textContent='Вопрос '+(idx+1)+' из '+MOMENTS.length;
+  $('#moment-step').textContent='Вопрос '+(idx+1)+' из '+total;
   $('#moment-question').textContent=rec?'Правильный ответ':'Что за фильм?';
   $('#moment-poster').classList.toggle('parody',!rec);
   $('#moment-poster').classList.toggle('reveal',!!rec);
@@ -860,7 +897,7 @@ function renderMoments(){
   $('#moment-badge').classList.toggle('original',!!rec);
   $('#moment-caption').hidden=!rec;
   $('#moment-caption').innerHTML=rec?m.title+'<small>'+m.year+' год</small>':'';
-  $('#moment-progress').style.width=((idx+(rec?1:0))/MOMENTS.length*100)+'%';
+  $('#moment-progress').style.width=((idx+(rec?1:0))/total*100)+'%';
   renderDots(idx,rec);
 
   const box=$('#moment-options'); box.innerHTML='';
@@ -875,7 +912,7 @@ function renderMoments(){
       ? 'Верно! Очки получила команда '+(rec.teamName||state.teams[state.recipient].name)
       : 'Не угадали. Очки списаны у команды '+(rec.teamName||state.teams[state.recipient].name);
     $('#moment-next').hidden=false;
-    $('#moment-next').textContent=idx===MOMENTS.length-1?'Показать результат':'Следующий фильм';
+    $('#moment-next').textContent=idx===total-1?'Показать результат':'Следующий фильм';
   }else{
     box.hidden=false;
     $('#moment-answer').hidden=true;
@@ -888,6 +925,16 @@ function renderMoments(){
       b.addEventListener('click',()=>answerMoment(k));
       box.appendChild(b);
     });
+    ctx.tries.forEach(t=>{
+      const k=ctx.options.findIndex(o=>o.text===t.chosen);
+      const b=k>=0?box.querySelector(`[data-opt="${k}"]`):null;
+      if(b){ b.disabled=true; b.classList.add('wrong'); }
+    });
+    if(ctx.tries.length===1){
+      $('#moment-verdict').hidden=false;
+      $('#moment-verdict').className='verdict-line bad';
+      $('#moment-verdict').textContent='Не угадали — теперь отвечает '+state.teams[state.active].name;
+    }
   }
   updateAll();
 }
@@ -907,34 +954,60 @@ function showMomentAnswer(m,ok,teamName){
   $('#moment-verdict').hidden=false;
   $('#moment-verdict').className='verdict-line '+(ok?'ok':'bad');
   $('#moment-verdict').textContent=ok?('Верно! Очки получила команда '+teamName):('Не угадали. Очки списаны у команды '+teamName);
-  $('#moment-progress').style.width=((ctx.index+1)/MOMENTS.length*100)+'%';
+  const total=state.moments.order.length;
+  $('#moment-progress').style.width=((ctx.index+1)/total*100)+'%';
   $('#moment-next').hidden=false;
-  $('#moment-next').textContent=ctx.index===MOMENTS.length-1?'Показать результат':'Следующий фильм';
+  $('#moment-next').textContent=ctx.index===total-1?'Показать результат':'Следующий фильм';
   renderDots(ctx.index,{ok});
   updateMomentPick();
 }
 function answerMoment(k){
   if(!ctx||ctx.mode!=='moment'||ctx.answered) return;
-  ctx.answered=true;
-  ctx.locked=true;
   const chosen=ctx.options[k];
-  $$('.moments-opt').forEach((b,idx)=>{
-    b.disabled=true;
-    if(ctx.options[idx].ok) b.classList.add('correct');
-  });
-  if(!chosen.ok) $(`.moments-opt[data-opt="${k}"]`)?.classList.add('wrong');
+  const btn=$(`.moments-opt[data-opt="${k}"]`);
+  if(btn?.disabled) return;
+  const answering=state.active;
   const teamName=award(chosen.ok,MOMENT_PRICE);
-  state.moments.answered[ctx.index]={ok:chosen.ok,chosen:chosen.text,teamName,title:ctx.data.title};
+  ctx.tries.push({team:answering,recipient:state.recipient,chosen:chosen.text,ok:chosen.ok});
+  if(btn){ btn.disabled=true; btn.classList.add(chosen.ok?'correct':'wrong'); }
+  if(chosen.ok){
+    ctx.answered=true; ctx.locked=true;
+    $$('.moments-opt').forEach(b=>b.disabled=true);
+    state.moments.answered[ctx.index]={ok:true,chosen:chosen.text,teamName,title:ctx.data.title,momentId:ctx.data.id,tries:[...ctx.tries]};
+    state.moments.pending={index:-1,tries:[]};
+    save();
+    showMomentAnswer(ctx.data,true,teamName);
+    updateScore();
+    confetti(); sfx.win(); toast(teamName+' +'+MOMENT_PRICE+' очков');
+    return;
+  }
+  if(ctx.tries.length===1){
+    ctx.locked=true;
+    const other=answering===0?1:0;
+    state.active=other; state.recipient=other; recipientManual=false;
+    state.moments.pending={index:ctx.index,tries:[...ctx.tries]};
+    save(); updateScore();
+    $('#moment-verdict').hidden=false;
+    $('#moment-verdict').className='verdict-line bad';
+    $('#moment-verdict').textContent='Не угадали — теперь отвечает '+state.teams[other].name;
+    sfx.bad(); toast('Ход переходит к '+state.teams[other].name);
+    return;
+  }
+  ctx.answered=true; ctx.locked=true;
+  $$('.moments-opt').forEach(b=>b.disabled=true);
+  state.moments.answered[ctx.index]={ok:false,chosen:chosen.text,teamName,title:ctx.data.title,momentId:ctx.data.id,tries:[...ctx.tries]};
+  state.moments.pending={index:-1,tries:[]};
   save();
-  showMomentAnswer(ctx.data,chosen.ok,teamName);
+  showMomentAnswer(ctx.data,false,teamName);
   updateScore();
-  if(chosen.ok){ confetti(); sfx.win(); toast(teamName+' +'+MOMENT_PRICE+' очков'); }
-  else { sfx.bad(); toast(teamName+' −'+MOMENT_PRICE+' очков'); }
+  sfx.bad(); toast(teamName+' −'+MOMENT_PRICE+' очков');
 }
 function nextMoment(){
   if(!ctx||ctx.mode!=='moment'||!ctx.answered) return;
   sfx.click();
-  if(ctx.index>=MOMENTS.length-1){
+  const total=state.moments.order.length;
+  state.moments.pending={index:-1,tries:[]};
+  if(ctx.index>=total-1){
     state.moments.done=true; save();
     renderMomentDone(); confetti(); sfx.win();
   }else{
@@ -944,9 +1017,10 @@ function nextMoment(){
 function renderMomentDone(){
   $('#moment-game').hidden=true;
   $('#moment-done').hidden=false;
+  const total=state.moments.order.length;
   const right=state.moments.answered.filter(a=>a&&a.ok).length;
-  $('#moment-done-title').textContent = right>=9 ? 'Отличная память!' : right>=6 ? 'Почти всё угадано!' : 'Было непросто!';
-  $('#moment-done-stats').textContent='Правильных ответов: '+right+' из '+MOMENTS.length;
+  $('#moment-done-title').textContent = right>=total-1 ? 'Отличная память!' : right>=Math.ceil(total*.6) ? 'Почти всё угадано!' : 'Было непросто!';
+  $('#moment-done-stats').textContent='Правильных ответов: '+right+' из '+total;
   const box=$('#moment-done-teams'); box.innerHTML='';
   state.teams.forEach((t,i)=>{
     const d=document.createElement('div');
@@ -961,7 +1035,7 @@ function restartMoments(){
   state.moments=fresh().moments;
   save(); recipientManual=false;
   renderMoments(); updateAll();
-  toast('Новый раунд из 10 афиш'); sfx.open();
+  toast('Новый раунд из '+state.moments.order.length+' афиш'); sfx.open();
 }
 
 /* ============================ СОБЫТИЯ ============================ */

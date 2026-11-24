@@ -4,18 +4,22 @@
 
 ## Афиши для «Угадай момент»
 
-Оригинальные афиши собраны из локальных кадров и свободных изображений Wikimedia Commons. Искажённые версии (`*-parody.jpg`) созданы локально из этих афиш: пикселизация, сдвиг цветовых каналов, глитч-полосы и зерно.
+Новые афиши предоставлены автором проекта (партии 1–4). Оригинальные постеры принадлежат правообладателям фильмов и используются в некоммерческой семейной игре. Пародийные версии без текста лежат в `posters/parody/`, оригиналы — в `posters/original/`; все файлы приведены к формату **600×900 JPEG**. Пародия для «Гостьи из будущего» взята из отдельно присланного автором изображения.
 
-- `posters/captive.jpg` — «Кавказская пленница», 1967 — https://commons.wikimedia.org/wiki/File:%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B0%D1%8F_%D0%BF%D0%BB%D0%B5%D0%BD%D0%BD%D0%B8%D1%86%D0%B0_22.jpg
-- `posters/diamond.jpg` — «Бриллиантовая рука», 1969 — https://commons.wikimedia.org/wiki/File:%D0%91%D1%80%D0%B8%D0%BB%D0%BB%D0%B8%D0%B0%D0%BD%D1%82%D0%BE%D0%B2%D0%B0%D1%8F_%D1%80%D1%83%D0%BA%D0%B0_(%D0%91%D1%80%D0%B8%D0%BB%D0%BB%D0%B8%D0%B0%D0%BD%D1%82_%D0%BF%D0%BE%D1%87%D1%82%D0%B8_%D0%BD%D0%B5_%D0%B2%D0%B8%D0%B4%D0%B5%D0%BD_).jpg
-- `posters/ivan.jpg` — «Иван Васильевич меняет профессию», 1973 — https://commons.wikimedia.org/wiki/File:%D0%98%D0%B2%D0%B0%D0%BD_%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87_%D0%BC%D0%B5%D0%BD%D1%8F%D0%B5%D1%82_%D0%BF%D1%80%D0%BE%D1%84%D0%B5%D1%81%D1%81%D0%B8%D1%8E.jpg
-- `posters/office.jpg` — «Служебный роман», 1977 — локальный кадр `classic-1.jpg`, mos.ru / Wikimedia Commons, CC BY 4.0
-- `posters/irony.jpg` — «Ирония судьбы», 1975 — https://commons.wikimedia.org/wiki/File:Ironiya1.jpg
-- `posters/guest.jpg` — «Гостья из будущего», 1985 — локальный кадр `tales-1.jpg`, Киностудия имени Горького / Wikimedia Commons, CC BY
-- `posters/electro.jpg` — «Приключения Электроника», 1979 — https://commons.wikimedia.org/wiki/File:%D0%92%D0%B5%D0%BB%D1%82%D0%B8%D1%81%D1%82%D0%BE%D0%B2_%D0%95._%D0%9F%D1%80%D0%B8%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D1%8F_%D0%AD%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D0%BD%D0%B8%D0%BA%D0%B0_(1986).jpg
-- `posters/timur.jpg` — «Тимур и его команда», 1940 — https://commons.wikimedia.org/wiki/File:%22%D0%94%D0%BE%D0%BC_%D0%B6%D1%83%D1%80%D0%BD%D0%B0%D0%BB%D0%B8%D1%81%D1%82%D0%B0%22.jpg
-- `posters/saltan.jpg` — «Сказка о царе Салтане», 1916 — https://commons.wikimedia.org/wiki/File:V.N._Kurdyumov_-_Tale_of_Tsar_Saltan_(1913)_00_cover.jpg
-- `posters/pooh.jpg` — «Винни-Пух», 1969 — https://commons.wikimedia.org/wiki/File:Russian_Pooh_and_Piglet_postcard_(cropped).png
+- `posters/original/polosatyy-reys.jpg` и `posters/parody/polosatyy-reys.jpg` — «Полосатый рейс», 1961
+- `posters/original/devchata.jpg` и `posters/parody/devchata.jpg` — «Девчата», 1961
+- `posters/original/operatsiya-y.jpg` и `posters/parody/operatsiya-y.jpg` — «Операция „Ы“», 1965
+- `posters/original/kavkazskaya-plennitsa.jpg` и `posters/parody/kavkazskaya-plennitsa.jpg` — «Кавказская пленница», 1966
+- `posters/original/brilliantovaya-ruka.jpg` и `posters/parody/brilliantovaya-ruka.jpg` — «Бриллиантовая рука», 1968
+- `posters/original/ironiya-sudby.jpg` и `posters/parody/ironiya-sudby.jpg` — «Ирония судьбы», 1975
+- `posters/original/mama.jpg` и `posters/parody/mama.jpg` — «Мама», 1976
+- `posters/original/sluzhebnyy-roman.jpg` и `posters/parody/sluzhebnyy-roman.jpg` — «Служебный роман», 1977
+- `posters/original/moskva-slezam-ne-verit.jpg` и `posters/parody/moskva-slezam-ne-verit.jpg` — «Москва слезам не верит», 1979
+- `posters/original/vam-i-ne-snilos.jpg` и `posters/parody/vam-i-ne-snilos.jpg` — «Вам и не снилось», 1980
+- `posters/original/charodei.jpg` и `posters/parody/charodei.jpg` — «Чародеи», 1982
+- `posters/original/petrov-i-vasechkin.jpg` и `posters/parody/petrov-i-vasechkin.jpg` — «Приключения Петрова и Васечкина», 1983
+- `posters/original/gostya-iz-budushchego.jpg` и `posters/parody/gostya-iz-budushchego.jpg` — «Гостья из будущего», 1985
+- `posters/original/ivan-vasilevich.jpg` и `posters/parody/ivan-vasilevich.jpg` — «Иван Васильевич меняет профессию», 1973
 
 ## Прежние кадры
 
