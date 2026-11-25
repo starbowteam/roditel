@@ -466,7 +466,7 @@ const SUBJECTS = [
     ['Самый лёгкий газ?', 'Водород', 'Водород — самый лёгкий элемент: его атомная масса около 1. Натрий — металл, а не газ.',
       ['Водород','Кислород','Натрий','Азот']]
   ]},
-  {id:'russian', title:'Русский и литература', icon:'📚', color:'#ff6f61', questions:[
+  {id:'russian', title:'Русский язык', icon:'📚', color:'#ff6f61', questions:[
     ['Сколько гласных букв в русском алфавите?', '10', 'В русском алфавите 10 гласных, 21 согласная и 2 буквы без звука — всего 33.',
       ['10','5','21','33']],
     ['Как правильно поставить ударение: звОнит или звонИт?', 'звонИт', 'Литературная норма — звонИт. Запомнить помогает фраза: «ЗвонИт телефон, а не звОнит».',
@@ -474,13 +474,13 @@ const SUBJECTS = [
     ['В каком слове букв больше, чем звуков?', 'тень', 'В слове «тень» 4 буквы, но 3 звука: [т’эн’]. Мягкий знак звука не обозначает.',
       ['тень','яблоко','юла','маяк']]
   ]},
-  {id:'history', title:'История', icon:'🏛️', color:'#43a978', questions:[
+  {id:'history', title:'История', icon:'🏛️', color:'#ef6fa8', questions:[
     ['Какое событие произошло на Руси в 988 году?', 'Крещение Руси', 'В 988 году князь Владимир принял христианство и крестил Русь.',
       ['Крещение Руси','Ледовое побоище','Отмена крепостного права','Начало Смуты']],
     ['Какого русского царя прозвали Грозным?', 'Иван Грозный', 'Иван IV получил прозвище Грозный за жёсткое правление и борьбу с боярами.',
       ['Иван Грозный','Владимир Красное Солнышко','Лжедмитрий','Пётр I']]
   ]},
-  {id:'geography', title:'География', icon:'🌍', color:'#ef6fa8', questions:[
+  {id:'geography', title:'География', icon:'🌍', color:'#43a978', questions:[
     ['Какой самый большой материк на Земле?', 'Евразия', 'Евразия занимает около 54 млн км² — больше Африки и Северной Америки вместе.',
       ['Евразия','Африка','Северная Америка','Антарктида']],
     ['Какая столица Канады?', 'Оттава', 'Оттава — столица Канады; город был выбран резиденцией правительства ещё в 1857 году, хотя Торонто и Монреаль крупнее.',
@@ -765,6 +765,7 @@ function makeTile(i,j,color,price,sub){
   b.type='button';
   b.className='tile'+(rec?' played':'')+(rec?(rec.ok?' win'+rec.team:' miss'):'');
   b.style.setProperty('--accent',color);
+  b.style.gridColumn=i+1; b.style.gridRow=j+2;
   b.dataset.i=i; b.dataset.j=j;
   b.disabled=!!rec;
   b.innerHTML='<span class="price">'+price+'</span><span class="sub">'+sub+'</span>'+
@@ -774,9 +775,10 @@ function makeTile(i,j,color,price,sub){
 }
 function renderSubject(){
   const board=$('#subject-board'); board.innerHTML='';
-  SUBJECTS.forEach(s=>{
+  SUBJECTS.forEach((s,i)=>{
     const h=document.createElement('div');
     h.className='board-head'; h.style.setProperty('--accent',s.color);
+    h.style.gridColumn=i+1; h.style.gridRow=1;
     h.innerHTML='<span class="hi">'+s.icon+'</span><span class="ht">'+s.title+'</span><span class="hs">викторина</span>';
     board.appendChild(h);
   });
